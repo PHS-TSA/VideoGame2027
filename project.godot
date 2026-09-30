@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="VideoGame2027"
+run/main_scene="uid://bn8i8rml4diwx"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
