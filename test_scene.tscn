@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bn8i8rml4diwx"]
+
+[ext_resource type="Script" uid="uid://btsfc6ombjulu" path="res://player.gd" id="1_uhqqe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55rrb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p423k"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r2ikn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p423k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r2ikn"]
+
+[node name="TestScene" type="Node3D" unique_id=863954688]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2015879665]
+transform = Transform3D(1, 0, 0, 0, 0.90925217, 0.41624573, 0, -0.41624573, 0.90925217, 0, 6.0110273, 13.135512)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1483812704]
+transform = Transform3D(1, 0, 0, 0, 0.7865045, 0.6175845, 0, -0.6175845, 0.7865045, 0, 5.698823, 0)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=2059022899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8376508, 0)
+script = ExtResource("1_uhqqe")
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="Player" unique_id=1968307300]
+shape = SubResource("CapsuleShape3D_55rrb")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="Player" unique_id=830122875]
+material_override = SubResource("StandardMaterial3D_p423k")
+mesh = SubResource("CapsuleMesh_r2ikn")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1826956936]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="FloorCollision" type="CollisionShape3D" parent="Floor" unique_id=381027965]
+shape = SubResource("BoxShape3D_p423k")
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor" unique_id=405568238]
+mesh = SubResource("BoxMesh_r2ikn")
