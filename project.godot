@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="VideoGame2027"
-run/main_scene="uid://bn8i8rml4diwx"
+run/main_scene="uid://c8smejbdyq78o"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[layer_names]
+
+3d_physics/layer_1="Environment "
+3d_physics/layer_2="Player\\"
 
 [physics]
 
