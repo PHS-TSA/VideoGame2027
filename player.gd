@@ -21,6 +21,9 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction.length() >= 0.1:
+		var target_angle = atan2(-direction.x, -direction.z)
+		$MeshInstance3D.rotation.y = lerp_angle($MeshInstance3D.rotation.y, target_angle, 10.0 * delta)
 	if direction:
 		velocity.x = direction.x * (speed_lvl + 5)
 		velocity.z = direction.z * (speed_lvl + 5)
