@@ -17,10 +17,10 @@ sky = SubResource("Sky_a202f")
 glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lkyv1"]
-size = Vector2(30, 30)
+size = Vector2(50, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6jop5"]
-size = Vector3(30, 0.01, 30)
+size = Vector3(50, 0.01, 50)
 
 [node name="Node3D" type="Node3D" unique_id=427661241]
 
@@ -32,15 +32,18 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="player" parent="." unique_id=1487388572 instance=ExtResource("1_0dwx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.59054, 1, 0)
 collision_layer = 2
 
 [node name="basicEnemy" parent="." unique_id=1330200711 instance=ExtResource("2_7b2gm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6014833, 1.0185661, -8.244236)
 
 [node name="followingEnemy" parent="." unique_id=2096311272 node_paths=PackedStringArray("player") instance=ExtResource("3_wetts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.397759, 0.99138117, 0)
 player = NodePath("../player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=408966913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04034996, 0, -0.014564514)
 mesh = SubResource("PlaneMesh_lkyv1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=124208113]
