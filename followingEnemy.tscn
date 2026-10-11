@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bfphtccdxfekh"]
+
+[ext_resource type="Script" uid="uid://ckvyewty6j81r" path="res://followingEnemy.gd" id="1_0vqkd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqquq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tt7e2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s7bn3"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1330200711]
+script = ExtResource("1_0vqkd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=660693852]
+shape = SubResource("CapsuleShape3D_gqquq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1260472217]
+mesh = SubResource("CapsuleMesh_tt7e2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=332724321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014938951, 0.5650327, -0.36015916)
+mesh = SubResource("BoxMesh_s7bn3")
+
+[node name="DirectionTimer" type="Timer" parent="." unique_id=298586781]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_timer_timeout"]

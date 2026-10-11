@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c8smejbdyq78o"]
 
 [ext_resource type="PackedScene" uid="uid://0wfvgaso53x3" path="res://player.tscn" id="1_0dwx2"]
+[ext_resource type="PackedScene" uid="uid://bf3ycs2cloume" path="res://basicEnemy.tscn" id="2_7b2gm"]
+[ext_resource type="PackedScene" uid="uid://bfphtccdxfekh" path="res://followingEnemy.tscn" id="3_wetts"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -29,9 +31,14 @@ environment = SubResource("Environment_noarx")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CharacterBody3D" parent="." unique_id=1487388572 instance=ExtResource("1_0dwx2")]
+[node name="player" parent="." unique_id=1487388572 instance=ExtResource("1_0dwx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
+
+[node name="basicEnemy" parent="." unique_id=1330200711 instance=ExtResource("2_7b2gm")]
+
+[node name="followingEnemy" parent="." unique_id=2096311272 node_paths=PackedStringArray("player") instance=ExtResource("3_wetts")]
+player = NodePath("../player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=408966913]
 mesh = SubResource("PlaneMesh_lkyv1")
