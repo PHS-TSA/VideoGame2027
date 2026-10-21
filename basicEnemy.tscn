@@ -2,28 +2,55 @@
 
 [ext_resource type="Script" uid="uid://b7l2bxoi7y0dh" path="res://basicEnemy.gd" id="1_i4a7s"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqquq"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_22deh"]
+height = 10.0
+radius = 3.0
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_tt7e2"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2teex"]
+height = 10.0
+radius = 3.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_s7bn3"]
-size = Vector3(0.5, 0.2, 0.5)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkes7"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4a7s"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_22deh"]
+material = SubResource("StandardMaterial3D_i4a7s")
+top_radius = 3.0
+bottom_radius = 3.0
+height = 0.1
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1330200711]
+collision_layer = 4
 script = ExtResource("1_i4a7s")
 
+[node name="Area3D" type="Area3D" parent="." unique_id=903261239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28654864, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=994809918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0664806, 0)
+shape = SubResource("CylinderShape3D_22deh")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+debug_fill = false
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=660693852]
-shape = SubResource("CapsuleShape3D_gqquq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75794, 0)
+shape = SubResource("CylinderShape3D_2teex")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+debug_fill = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1260472217]
-mesh = SubResource("CapsuleMesh_tt7e2")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=332724321]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014938951, 0.5650327, -0.36015916)
-mesh = SubResource("BoxMesh_s7bn3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28654864, 0)
+material_override = SubResource("StandardMaterial3D_kkes7")
+transparency = 0.75
+mesh = SubResource("CylinderMesh_22deh")
 
 [node name="DirectionTimer" type="Timer" parent="." unique_id=298586781]
 wait_time = 2.5
 autostart = true
 
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_timer_timeout"]

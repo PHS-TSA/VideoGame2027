@@ -11,11 +11,11 @@ func _physics_process(delta: float) -> void:
 	
 	if isForward == true: 
 		velocity.x = Vector3.RIGHT.x * SPEED
-		$MeshInstance3D.rotation.y = lerp_angle($MeshInstance3D.rotation.y, atan2(Vector3.LEFT.x, 0), 10.0 * delta)
+		#$MeshInstance3D.rotation.y = lerp_angle($MeshInstance3D.rotation.y, atan2(Vector3.LEFT.x, 0), 10.0 * delta)
 		direction_timer.start
 	else:
 		velocity.x = Vector3.LEFT.x * SPEED 
-		$MeshInstance3D.rotation.y = lerp_angle($MeshInstance3D.rotation.y, atan2(Vector3.RIGHT.x, 0), 10.0 * delta)
+		#$MeshInstance3D.rotation.y = lerp_angle($MeshInstance3D.rotation.y, atan2(Vector3.RIGHT.x, 0), 10.0 * delta)
 		direction_timer.start
 		
 
@@ -24,3 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	isForward = not isForward
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	Global.detectable = true

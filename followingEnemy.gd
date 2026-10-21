@@ -20,16 +20,19 @@ func _physics_process(delta: float) -> void:
 		
 	var distance = global_position.distance_to(player.global_position)
 	
-	if distance < 5:
+	if Global.detectable == true:
 		isFollowing = true
-	elif distance > 10:
-		isFollowing = false 
+	else:
+		if distance < 5:
+			isFollowing = true
+		elif distance > 10:
+			isFollowing = false 
 	
 	if isInitalPositionRecorded == false: 
 		init_position = global_position
 		print(init_position)
-		isInitalPositionRecorded = true 
-		
+		isInitalPositionRecorded = true 	
+	
 	if isFollowing: 
 		var direction: Vector3 = global_position.direction_to(player.global_position)
 		var target_angle = atan2(-direction.x, -direction.z)
@@ -46,7 +49,6 @@ func _physics_process(delta: float) -> void:
 			velocity.z = 0
 			velocity.x = 0
 			$MeshInstance3D.rotation = Vector3.ZERO #reset to original position
-			print("at inital")
 		else: 
 			#if isCurrentPositionRecorded == false:
 				#current_position = global_position

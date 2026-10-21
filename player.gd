@@ -17,6 +17,7 @@ var is_cooldown = false
 
 @onready var dodge_timer = $DodgeTimer
 @onready var dodge_cooldown = $DodgeCooldown
+@onready var detectable_timer = $DetectableTimer
 
 func start_dodge(dir: Vector3):
 	is_dodging = true 
@@ -33,6 +34,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	if Global.detectable == true and detectable_timer.is_stopped():
+		detectable_timer.start(5)
+		print("detectable Timer started")
+		
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -74,4 +79,10 @@ func _on_timer_timeout() -> void:
 
 func _on_dodge_cooldown_timeout() -> void:
 	is_cooldown = false 
+	
+
+
+func _on_detectable_timer_timeout() -> void:
+	Global.detectable = false
+	print("detectable timer finished")
 	
