@@ -36,7 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.59054, 1, 0)
 collision_layer = 2
 
 [node name="basicEnemy" parent="." unique_id=1330200711 instance=ExtResource("2_7b2gm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6014833, 1.0185661, -8.244236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6014833, 0.35357356, -8.244236)
+collision_priority = 0.0
 
 [node name="followingEnemy" parent="." unique_id=2096311272 node_paths=PackedStringArray("player") instance=ExtResource("3_wetts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.397759, 0.99138117, 0)
