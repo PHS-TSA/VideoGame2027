@@ -24,6 +24,10 @@ Global="*uid://d1ue4d6ceqvtv"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 shift={
