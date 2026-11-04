@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://daq5dhj6g3p0u"]
+
+[ext_resource type="Script" uid="uid://b0a8o2vnv1ok8" path="res://talking_npc.gd" id="1_b0gky"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s7mmn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b0gky"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fr5e7"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=4071224]
+script = ExtResource("1_b0gky")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=570705527]
+shape = SubResource("CapsuleShape3D_s7mmn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=743168207]
+mesh = SubResource("CapsuleMesh_b0gky")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=319083950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014938951, 0.5650327, -0.36015916)
+mesh = SubResource("BoxMesh_fr5e7")
