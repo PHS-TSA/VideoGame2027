@@ -63,6 +63,9 @@ func _physics_process(delta: float) -> void:
 			elif Input.is_action_pressed("Crouch"):
 				velocity.x = direction.x * (3)
 				velocity.z = direction.z * (3)
+			elif Input.is_action_pressed("shift"):
+				velocity.x = direction.x * (speed_lvl + 8)
+				velocity.z = direction.z * (speed_lvl + 8)
 			else:
 				velocity.x = direction.x * speed_lvl
 				velocity.z = direction.z * speed_lvl
