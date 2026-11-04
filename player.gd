@@ -5,7 +5,7 @@ var lvl = 1
 
 var stealth_lvl = 1.0
 var int_lvl = 1.0
-var speed_lvl = 0 #only small increments 
+var speed_lvl = 5 #only small increments 
 
 var stamina = 100.0
 
@@ -58,18 +58,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		if direction:
 			if Input.is_action_pressed("shift"):
-				velocity.x = direction.x * (speed_lvl + 8)
-				velocity.z = direction.z * (speed_lvl + 8)
+				velocity.x = direction.x * speed_lvl * (1.5)
+				velocity.z = direction.z * speed_lvl * (1.5)
 			elif Input.is_action_pressed("Crouch"):
 				velocity.x = direction.x * (3)
 				velocity.z = direction.z * (3)
 			else:
-				velocity.x = direction.x * (speed_lvl + 5)
-				velocity.z = direction.z * (speed_lvl + 5)
+				velocity.x = direction.x * speed_lvl
+				velocity.z = direction.z * speed_lvl
 		else:
-			velocity.x = move_toward(velocity.x, 0, (speed_lvl + 5))
-			velocity.z = move_toward(velocity.z, 0, (speed_lvl + 5))
-
+			velocity.x = move_toward(velocity.x, 0, speed_lvl)
+			velocity.z = move_toward(velocity.z, 0, speed_lvl)
+		
 	move_and_slide()
 
 

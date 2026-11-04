@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://0wfvgaso53x3" path="res://player.tscn" id="1_0dwx2"]
 [ext_resource type="PackedScene" uid="uid://bf3ycs2cloume" path="res://basicEnemy.tscn" id="2_7b2gm"]
 [ext_resource type="PackedScene" uid="uid://bfphtccdxfekh" path="res://followingEnemy.tscn" id="3_wetts"]
+[ext_resource type="PackedScene" uid="uid://daq5dhj6g3p0u" path="res://talking_npc.tscn" id="4_00014"]
+[ext_resource type="PackedScene" uid="uid://d0v7xuxyikugd" path="res://box.tscn" id="4_g4tgr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -41,6 +43,15 @@ collision_priority = 0.0
 
 [node name="followingEnemy" parent="." unique_id=2096311272 node_paths=PackedStringArray("player") instance=ExtResource("3_wetts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.397759, 0.99138117, 0)
+player = NodePath("../player")
+
+[node name="RigidBody3D" parent="." unique_id=430770655 instance=ExtResource("4_g4tgr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9141042, 0)
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CharacterBody3D" parent="." unique_id=4071224 node_paths=PackedStringArray("player") instance=ExtResource("4_00014")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04034996, 1.027935, 8.465553)
 player = NodePath("../player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=408966913]
